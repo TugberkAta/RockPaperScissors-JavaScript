@@ -1,5 +1,7 @@
 let computerChoice;
 let playerChoice;
+let gameRound = 0;
+let score = 0;
 
 function getRandomInt(number){
     return Math.floor(Math.random()*number)+1;
@@ -21,6 +23,8 @@ function getComputerChoice(){
 function capitalize(string){
    return string.charAt(0).toUpperCase() + string.slice(1)
 }
+
+while(gameRound < 5){
 
 getComputerChoice()
 
@@ -49,6 +53,11 @@ else if(computerChoice === "scissors" && playerChoice === "paper"){
 
 else{
     console.log("You won!!");
+    score++;
 }
 
-console.log("Computer Picked: " + capitalize(computerChoice))
+gameRound++
+
+console.log("Computer Picked: " + capitalize(computerChoice) +"\nscore: " + score +"\ngame round: " + gameRound)
+
+}
