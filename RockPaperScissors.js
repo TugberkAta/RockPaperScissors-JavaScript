@@ -24,16 +24,9 @@ function capitalize(string){
    return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-while(gameRound < 5){
+function gameLogic(){
 
 getComputerChoice()
-
-playerChoice = prompt("Choose between Rock, Paper or Scissors").toLowerCase()
-
-while(playerChoice !== "rock" && playerChoice !== "scissors" && playerChoice !== "paper"){
-    console.log("Please Enter a Correct Input");
-    playerChoice = prompt("Choose between Rock, Paper or Scissors").toLowerCase()
-}
 
  if(computerChoice === playerChoice){
     console.log("Its a draw");
@@ -51,6 +44,34 @@ else{
 
 gameRound++;
 
-console.log("Computer Picked: " + capitalize(computerChoice) +"\nscore: " + score +"\ngame round: " + gameRound);
+updateResultText()
 
 }
+
+const rock = document.querySelector("#rock")
+rock.addEventListener("click", () =>{
+    playerChoice="rock";
+    gameLogic()
+});
+
+const paper = document.querySelector("#paper")
+paper.addEventListener("click", () =>{
+    playerChoice="paper";
+    gameLogic()
+});
+
+const scissors = document.querySelector("#scissors")
+scissors.addEventListener("click", () =>{
+    playerChoice="scissors";
+    gameLogic()
+});
+
+const body = document.body
+const div = document.createElement("div")
+const result = document.createElement("p")
+
+function updateResultText(){
+result.textContent = "Computer Picked: " + capitalize(computerChoice) +"\nScore: " + score +"\nGame Round: " + gameRound
+}
+document.body.appendChild(div);
+div.append(result);
