@@ -39,15 +39,8 @@ while(playerChoice !== "rock" && playerChoice !== "scissors" && playerChoice !==
     console.log("Its a draw");
 }
 
-else if(computerChoice === "rock" && playerChoice === "scissors"){
-    console.log("You, lose");
-}
-
-else if(computerChoice === "paper" && playerChoice === "rock"){
-    console.log("You, lose");
-}
-
-else if(computerChoice === "scissors" && playerChoice === "paper"){
+else if(computerChoice === "rock" && playerChoice === "scissors" || computerChoice === "paper" && playerChoice === "rock"
+|| computerChoice === "scissors" && playerChoice === "paper"){
     console.log("You, lose");
 }
 
@@ -56,8 +49,8 @@ else{
     score++;
 }
 
-gameRound++
+gameRound++;
 
-console.log("Computer Picked: " + capitalize(computerChoice) +"\nscore: " + score +"\ngame round: " + gameRound)
+console.log("Computer Picked: " + capitalize(computerChoice) +"\nscore: " + score +"\ngame round: " + gameRound);
 
 }
