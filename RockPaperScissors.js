@@ -1,7 +1,9 @@
 let computerChoice;
 let playerChoice;
 let gameRound = 0;
-let score = 0;
+let userScore = 0;
+let winner = "";
+let computerScore = 0;
 
 function getRandomInt(number){
     return Math.floor(Math.random()*number)+1;
@@ -28,25 +30,11 @@ function gameLogic(){
 
 getComputerChoice()
 
- if(computerChoice === playerChoice){
-    console.log("Its a draw");
-}
-
-else if(computerChoice === "rock" && playerChoice === "scissors" || computerChoice === "paper" && playerChoice === "rock"
-|| computerChoice === "scissors" && playerChoice === "paper"){
-    console.log("You, lose");
-}
-
-else{
-    console.log("You won!!");
-    score++;
-}
-
 gameRound++;
-
 updateResultText()
 
 }
+
 
 const rock = document.querySelector("#rock")
 rock.addEventListener("click", () =>{
@@ -68,10 +56,51 @@ scissors.addEventListener("click", () =>{
 
 const body = document.body
 const div = document.createElement("div")
+const gameWinner = document.createElement("p")
+const scoreBoard = document.querySelector("#Score")
 const result = document.createElement("p")
+const botResult = document.createElement("p")
+
+result.textContent = "Player score: " + userScore
+botResult.textContent = "Computer score: " + computerScore
 
 function updateResultText(){
-result.textContent = "Computer Picked: " + capitalize(computerChoice) +"\nScore: " + score +"\nGame Round: " + gameRound
+
+
+    if(computerChoice === playerChoice){
+        winner ="Its a draw"
+    }
+    
+    else if(computerChoice === "rock" && playerChoice === "scissors" || computerChoice === "paper" && playerChoice === "rock"
+    || computerChoice === "scissors" && playerChoice === "paper"){
+        winner = "You, lose"
+        computerScore++;
+    }
+    
+    else{
+        winner = "You won!!!";
+        userScore++;
+    }
+    
+    if(computerScore === 3 || userScore === 3){
+        if (userScore ===3){
+            alert("Congrats You Won!!")
+        }
+        else{
+            alert("Sorry You Lost :(")
+        }
+         gameRound = 0;
+         userScore = 0;
+         winner = "";
+         computerScore = 0;
+    }
+
+    gameWinner.textContent = winner;
+    result.textContent = "Player score: " + userScore
+    botResult.textContent = "Computer score: " + computerScore
 }
 document.body.appendChild(div);
 div.append(result);
+div.append(gameWinner)
+scoreBoard.append(result)
+scoreBoard.append(botResult)
