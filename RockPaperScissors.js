@@ -63,10 +63,14 @@ const botResult = document.createElement("p")
 const compPaper = document.querySelector("#compPaper")
 const compScissors = document.querySelector("#compScissors")
 const compRock = document.querySelector("#compRock")
+const won = document.querySelector("#won")
+const lost = document.querySelector("#lost")
 
 result.textContent = "Player score: " + userScore
 botResult.textContent = "Computer score: " + computerScore
 computerPick.textContent = "Waiting...";
+won.style.cssText = "opacity: 0;";
+lost.style.cssText = "opacity: 0;";
 
 function resetGame(){
     gameRound = 0;
@@ -77,6 +81,8 @@ function resetGame(){
     compScissors.style.cssText = "opacity: 1;"
     compRock.style.cssText = "opacity: 1;"
     computerPick.textContent = "Waiting...";
+    won.style.cssText = "opacity: 0;";
+    lost.style.cssText = "opacity: 0;";
 }
 
 
@@ -86,16 +92,24 @@ function updateResultText(){
     compScissors.style.cssText = "opacity: 1;"
     compRock.style.cssText = "opacity: 1;"
 
-    
-    if(computerChoice === "rock" && playerChoice === "scissors" || computerChoice === "paper" && playerChoice === "rock"
+    if(computerChoice === playerChoice){
+        won.style.cssText = "opacity: 0;";
+        lost.style.cssText = "opacity: 0;";
+    }
+
+    else if(computerChoice === "rock" && playerChoice === "scissors" || computerChoice === "paper" && playerChoice === "rock"
     || computerChoice === "scissors" && playerChoice === "paper"){
        
         computerScore++;
+        lost.style.cssText = "opacity: 1;"
+        won.style.cssText = "opacity: 0;";
     }
     
     else{
        
         userScore++;
+        won.style.cssText = "opacity: 1;";
+        lost.style.cssText = "opacity: 0;"
     }
 
     if(computerChoice === "rock"){

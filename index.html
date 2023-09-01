@@ -7,25 +7,50 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div class="choice-box">
-            <p class="coolLook">Rock, Paper or Scissors!</p>
-            <p class="coolLook"> Players' Choice</p>
+        
+        <div class="Header">
+                <div class="coolLook" id="Score"></div>
+                <div class="choice-box">
+                <p class="coolLook">Rock, Paper or Scissors!</p>
+                </div>  
+            </div>
+            <div class="choice-box">
+                <p class="coolLook"> Players' Choice</p>
+            </div>
+            
+        <div class="game-parts">
+            <div class="button-box">
+                <button class="buttons" id="rock">🪨</button>
+                <button class="buttons"id="paper">📄</button>
+                <button class="buttons"id="scissors">✂️</button>
+            </div>
         </div>
-        <div class="button-box">
-            <button class="buttons" id="rock">🪨</button>
-            <button class="buttons"id="paper">📄</button>
-            <button class="buttons"id="scissors">✂️</button>
-        </div>
+
+
         <div class="choice-box">
+            <div class="winners-losers"> 
+            <p class="coolLook" id="won"> You won!</p>
+            </div>  
+            <div class="winners-losers">
             <p class="coolLook"> Computers' Choice</p>
-        <div class="coolLook" id="computerResult"></div>
+            </div>
+            <div class="winners-losers">
+            <p class="coolLook" id="lost"> Computer won</p>
+            </div>
         </div>  
+
+
+        <div class="coolLook" id="computerResult"></div>
+        
+        <div class="game-parts">
         <div class="button-box">
             <button class="buttons" id="compRock">🪨</button>
             <button class="buttons"id="compPaper">📄</button>
             <button class="buttons"id="compScissors">✂️</button>
         </div>
-        <div id="Score"></div>
+        </div>
+
+
         <script src="RockPaperScissors.js"></script>
     </body>
     </html>
