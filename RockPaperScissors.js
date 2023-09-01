@@ -60,18 +60,34 @@ const computerPick = document.createElement("p")
 const scoreBoard = document.querySelector("#Score")
 const result = document.createElement("p")
 const botResult = document.createElement("p")
+const compPaper = document.querySelector("#compPaper")
+const compScissors = document.querySelector("#compScissors")
+const compRock = document.querySelector("#compRock")
 
 result.textContent = "Player score: " + userScore
 botResult.textContent = "Computer score: " + computerScore
+computerPick.textContent = "Waiting...";
+
+function resetGame(){
+    gameRound = 0;
+    userScore = 0;
+    winner = "";
+    computerScore = 0;
+    compPaper.style.cssText = "opacity: 1;"
+    compScissors.style.cssText = "opacity: 1;"
+    compRock.style.cssText = "opacity: 1;"
+    computerPick.textContent = "Waiting...";
+}
+
 
 function updateResultText(){
 
+    compPaper.style.cssText = "opacity: 1;"
+    compScissors.style.cssText = "opacity: 1;"
+    compRock.style.cssText = "opacity: 1;"
 
-    if(computerChoice === playerChoice){
-   
-    }
     
-    else if(computerChoice === "rock" && playerChoice === "scissors" || computerChoice === "paper" && playerChoice === "rock"
+    if(computerChoice === "rock" && playerChoice === "scissors" || computerChoice === "paper" && playerChoice === "rock"
     || computerChoice === "scissors" && playerChoice === "paper"){
        
         computerScore++;
@@ -81,7 +97,22 @@ function updateResultText(){
        
         userScore++;
     }
-    
+
+    if(computerChoice === "rock"){
+        compPaper.style.cssText = "opacity: 0;"
+        compScissors.style.cssText = "opacity: 0;"
+    }
+
+    else if(computerChoice === "paper"){
+        compScissors.style.cssText = "opacity: 0;"
+        compRock.style.cssText = "opacity: 0;"
+    }
+
+    else if(computerChoice === "scissors"){
+        compRock.style.cssText = "opacity: 0;"
+        compPaper.style.cssText = "opacity: 0;"
+    }
+
     if(computerScore === 3 || userScore === 3){
         if (userScore ===3){
             alert("Congrats You Won!!")
@@ -89,11 +120,9 @@ function updateResultText(){
         else{
             alert("Sorry You Lost :(")
         }
-         gameRound = 0;
-         userScore = 0;
-         winner = "";
-         computerScore = 0;
+         resetGame()
     }
+
 
     computerPick.textContent = capitalize(computerChoice);
     result.textContent = "Player score: " + userScore
