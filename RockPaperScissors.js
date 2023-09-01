@@ -55,8 +55,8 @@ scissors.addEventListener("click", () =>{
 });
 
 const body = document.body
-const div = document.createElement("div")
-const gameWinner = document.createElement("p")
+const computerResult = document.querySelector("#computerResult")
+const computerPick = document.createElement("p")
 const scoreBoard = document.querySelector("#Score")
 const result = document.createElement("p")
 const botResult = document.createElement("p")
@@ -68,17 +68,17 @@ function updateResultText(){
 
 
     if(computerChoice === playerChoice){
-        winner ="Its a draw"
+   
     }
     
     else if(computerChoice === "rock" && playerChoice === "scissors" || computerChoice === "paper" && playerChoice === "rock"
     || computerChoice === "scissors" && playerChoice === "paper"){
-        winner = "You, lose"
+       
         computerScore++;
     }
     
     else{
-        winner = "You won!!!";
+       
         userScore++;
     }
     
@@ -95,12 +95,12 @@ function updateResultText(){
          computerScore = 0;
     }
 
-    gameWinner.textContent = winner;
+    computerPick.textContent = capitalize(computerChoice);
     result.textContent = "Player score: " + userScore
     botResult.textContent = "Computer score: " + computerScore
 }
-document.body.appendChild(div);
-div.append(result);
-div.append(gameWinner)
-scoreBoard.append(result)
-scoreBoard.append(botResult)
+
+computerResult.append(result);
+computerResult.append(computerPick);
+scoreBoard.append(result);
+scoreBoard.append(botResult);

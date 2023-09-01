@@ -24,7 +24,13 @@
     padding-bottom: 0px;
 }
 
-.Choice{
+.coolLook{
     font-size: 30px;
     margin-bottom: 0px;
+}
+
+#Score{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
 }
